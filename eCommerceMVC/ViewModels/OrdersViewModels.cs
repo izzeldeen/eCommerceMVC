@@ -111,6 +111,7 @@ namespace eCommerceMVC.ViewModels
         public List<int> ProductIDs { get; set; }
         public List<Product> Products { get; set; }
     }
+
     public class UserOrdersViewModel
     {
         public int? OrderID { get; set; }

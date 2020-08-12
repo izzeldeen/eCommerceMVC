@@ -424,6 +424,7 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SuppliersApiController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Dtos\ApiPrintInvoiceViewModel.cs" />
     <Compile Include="Dtos\ProductToReturnDto.cs" />
     <Compile Include="Dtos\ResetPasswordVM.cs" />
     <Compile Include="Dtos\UpdateProfilePictuerVM.cs" />

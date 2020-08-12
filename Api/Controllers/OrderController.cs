@@ -1,10 +1,17 @@
-﻿using eCommerce.Entities;
+﻿using Api.Dtos;
+using com.sun.tools.javac.util;
+using eCommerce.Data;
+using eCommerce.Entities;
 using eCommerce.Services;
 using eCommerce.Shared.Extensions;
 using eCommerceMVC.Code.Helpers;
 using eCommerceMVC.ViewModels;
+using Magnum.Extensions;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -35,39 +42,14 @@ namespace Api.Controllers
         {
         }
 
-      
-
-
-        public CartProductsViewModel CartProducts(string productIDs)
-        {
-            CartProductsViewModel model = new CartProductsViewModel();
-
-            if (!string.IsNullOrEmpty(productIDs))
-            {
-                model.ProductIDs = productIDs.Split('-').Select(x => int.Parse(x)).Where(x => x > 0).ToList();
-
-                if (model.ProductIDs.Count > 0)
-                {
-                    model.Products = ProductsService.Instance.GetProductsByIDs(model.ProductIDs.Distinct().ToList());
-                }
-            }
-
-            return model;
-        }
-
+        [System.Web.Http.HttpGet]
         public DeliveryInfoViewModel DeliveryInfo(string UserId)
         {
             DeliveryInfoViewModel model = new DeliveryInfoViewModel();
-
-            if (User.Identity.IsAuthenticated)
-            {
-                model.User = UserManager.FindById(UserId);
-            }
-            else
-            {
-                model.User = new eCommerceUser();
-            }
-
+            if (UserId == null) return model;
+            eCommerceContext context = new eCommerceContext();
+            var UserManager = new UserManager<eCommerceUser>(new UserStore<eCommerceUser>(context));
+            model.User = UserManager.FindById(UserId);
             return model;
         }
         public JsonResult PlaceOrder(Order order)
@@ -87,48 +69,39 @@ namespace Api.Controllers
 
                 return jsonResult;
             }
-
             jsonResult.Data = new { Success = true, Message = string.Format("Order Saved Sucessfully") };
-
-
             return jsonResult;
-
-
-
-        }     
-        public UserOrdersViewModel UserOrders(string userEmail, int? orderID, int? orderStatus, int? pageNo)
+              } 
+        [System.Web.Http.HttpGet]
+        public List<Order> UserOrders(string UserId)
         {
-            var pageSize = ConfigurationsHelper.DashboardRecordsSizePerPage;
+            eCommerceContext context = new eCommerceContext();
 
-            UserOrdersViewModel model = new UserOrdersViewModel();
+            var res = context.Orders.Where(x => x.CustomerID == UserId).Include(x => x.Promo).Include(x => x.OrderItems.Select(a => a.Product))
+                 .Include(x => x.OrderHistory).ToList();
 
-            model.UserEmail = !string.IsNullOrEmpty(userEmail) ? userEmail : User.Identity.GetUserEmail();
-            model.OrderID = orderID;
-            model.OrderStatus = orderStatus;
 
-            model.UserOrders = OrdersService.Instance.SearchOrders(model.UserEmail, model.OrderID, model.OrderStatus, pageNo, pageSize);
-            var totalProducts = OrdersService.Instance.SearchOrdersCount(model.UserEmail, model.OrderID, model.OrderStatus);
+            return res;
 
-            model.Pager = new Pager(totalProducts, pageNo, pageSize);
-            //string JsonString;
-
-            //var Json = System.Text.Json.JsonSerializer.Serialize<UserOrdersViewModel>(model);
-
-            return model;
+        
         }
         public Order GetOrderById (int id)
         {
-            var res = OrdersService.Instance.GetOrderByID(id);
-
-            
+            eCommerceContext context = new eCommerceContext();
+            var res = context.Orders.Include(x => x.Promo).Include(x => x.OrderItems.Select(a=>a.Product))
+                .Include(x => x.OrderHistory)
+                .FirstOrDefault(x => x.ID == id);
             return res;
         }
-        public PrintInvoiceViewModel PrintInvoice(int orderID)
+        [System.Web.Http.HttpGet]
+        public ApiPrintInvoiceViewModel PrintInvoice(int orderID)
         {
-            PrintInvoiceViewModel model = new PrintInvoiceViewModel();
+            eCommerceContext context = new eCommerceContext();
+            ApiPrintInvoiceViewModel model = new ApiPrintInvoiceViewModel();
             model.OrderID = orderID;
-
-            model.Order = OrdersService.Instance.GetOrderByID(orderID);
+            model.Order = context.Orders.Include(x => x.Promo).Include(x => x.OrderItems.Select(a => a.Product))
+                .Include(x => x.OrderHistory)
+                .FirstOrDefault(x => x.ID == orderID);
 
             if (model.Order == null)
             {
@@ -137,10 +110,6 @@ namespace Api.Controllers
 
                return  model;
         }
-
-
-
-
 
 
     }

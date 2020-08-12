@@ -33,7 +33,7 @@ namespace Api.Controllers
             {
                 var category = categories.Find(elem.CategoryID).Name;
                 var categoryArName = categories.Find(elem.CategoryID).ArName;
-                System.Text.RegularExpressions.Regex rx = new System.Text.RegularExpressions.Regex("<[^>]*>");              
+              //  System.Text.RegularExpressions.Regex rx = new System.Text.RegularExpressions.Regex("<[^>]*>");              
                 elem.Description =  RemoveRegx(elem.Description);
                 elem.ArDescription = RemoveRegx(elem.ArDescription);
                 ProductToReturnDto products = new ProductToReturnDto
@@ -69,7 +69,7 @@ namespace Api.Controllers
             elem = Regex.Replace(elem, @"&lt;.+?&gt;|&nbsp;|\t|\r|\n", "").Trim();
 
             return elem;
-  }
+        }
 
         [System.Web.Http.HttpGet]
 
