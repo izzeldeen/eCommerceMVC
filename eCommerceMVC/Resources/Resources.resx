@@ -1,0 +1,693 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutUs" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Add a Review" xml:space="preserve">
+    <value>Add a Review</value>
+  </data>
+  <data name="Add to Cart" xml:space="preserve">
+    <value>Add to Cart</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Address is required." xml:space="preserve">
+    <value>Address is required.</value>
+  </data>
+  <data name="All Categories" xml:space="preserve">
+    <value>All Categories</value>
+  </data>
+  <data name="All Products" xml:space="preserve">
+    <value>All Products</value>
+  </data>
+  <data name="Already have an account?" xml:space="preserve">
+    <value>Already have an account?</value>
+  </data>
+  <data name="Amman, Jordan" xml:space="preserve">
+    <value>Amman, Jordan</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="Availibility" xml:space="preserve">
+    <value>Availibility</value>
+  </data>
+  <data name="Avatar" xml:space="preserve">
+    <value>Avatar</value>
+  </data>
+  <data name="Based on" xml:space="preserve">
+    <value>Based on</value>
+  </data>
+  <data name="Bootstrap" xml:space="preserve">
+    <value>../../Content/templates/aroma/vendors/bootstrap/bootstrap.min.css</value>
+  </data>
+  <data name="Brands" xml:space="preserve">
+    <value>Brands</value>
+  </data>
+  <data name="Browse Now" xml:space="preserve">
+    <value>Browse Now</value>
+  </data>
+  <data name="By" xml:space="preserve">
+    <value>By</value>
+  </data>
+  <data name="Cancellation Policy" xml:space="preserve">
+    <value>Cancellation Policy</value>
+  </data>
+  <data name="Cart Products" xml:space="preserve">
+    <value>Cart Products</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Change Avatar" xml:space="preserve">
+    <value>Change Avatar</value>
+  </data>
+  <data name="Change password" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="Change your account setting" xml:space="preserve">
+    <value>Change your account setting</value>
+  </data>
+  <data name="Check Out" xml:space="preserve">
+    <value>Check Out</value>
+  </data>
+  <data name="Checkout" xml:space="preserve">
+    <value>Checkout</value>
+  </data>
+  <data name="Checkout Now" xml:space="preserve">
+    <value>Checkout Now</value>
+  </data>
+  <data name="Checkout your products" xml:space="preserve">
+    <value>Checkout your products</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="City is required." xml:space="preserve">
+    <value>City is required.</value>
+  </data>
+  <data name="Click here to Log in" xml:space="preserve">
+    <value>Click here to Log in</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="Confirm Email" xml:space="preserve">
+    <value>Confirm Email</value>
+  </data>
+  <data name="Confirm Password" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="Connect Us on LinkedIn" xml:space="preserve">
+    <value>Connect Us on LinkedIn</value>
+  </data>
+  <data name="Contact Jomlah Jo Team." xml:space="preserve">
+    <value>Contact Jomlah Jo Team.</value>
+  </data>
+  <data name="Contact Us" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="Country is required." xml:space="preserve">
+    <value>Country is required.</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="Create a new account." xml:space="preserve">
+    <value>Create a new account.</value>
+  </data>
+  <data name="Create an Account" xml:space="preserve">
+    <value>Create an Account</value>
+  </data>
+  <data name="Current Password" xml:space="preserve">
+    <value>Current Password</value>
+  </data>
+  <data name="Customer and shipping Details" xml:space="preserve">
+    <value>Customer and shipping Details</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Delivery Chargres" xml:space="preserve">
+    <value>Delivery Chargres</value>
+  </data>
+  <data name="Delivery Info" xml:space="preserve">
+    <value>Delivery Info</value>
+  </data>
+  <data name="direction" xml:space="preserve">
+    <value>ltr</value>
+  </data>
+  <data name="Discount" xml:space="preserve">
+    <value>Discount</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Email is required." xml:space="preserve">
+    <value>Email is required.</value>
+  </data>
+  <data name="Enter Order ID" xml:space="preserve">
+    <value>Enter Order ID</value>
+  </data>
+  <data name="Enter verification code" xml:space="preserve">
+    <value>Enter verification code</value>
+  </data>
+  <data name="Enter Voucher/Promo Code" xml:space="preserve">
+    <value>Enter Voucher/Promo Code</value>
+  </data>
+  <data name="Enter your email" xml:space="preserve">
+    <value>Enter your email</value>
+  </data>
+  <data name="Featured Categories" xml:space="preserve">
+    <value>Featured Categories</value>
+  </data>
+  <data name="Featured Products" xml:space="preserve">
+    <value>Featured Products</value>
+  </data>
+  <data name="Final Amount" xml:space="preserve">
+    <value>Final Amount</value>
+  </data>
+  <data name="Firstname" xml:space="preserve">
+    <value>Firstname</value>
+  </data>
+  <data name="Follow Us on Instagram" xml:space="preserve">
+    <value>Follow Us on Instagram</value>
+  </data>
+  <data name="Forgot Password" xml:space="preserve">
+    <value>Forgot Password</value>
+  </data>
+  <data name="Founded in 2020 by Jomlah Jo e-commerce Company, Jomlah Jo has come a long way from its beginnings in Amman-Jordan." xml:space="preserve">
+    <value>Founded in 2020 by Jomlah Jo e-commerce Company, Jomlah Jo has come a long way from its beginnings in Amman-Jordan.</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>FullName</value>
+  </data>
+  <data name="Future Advanced Internet Solutions" xml:space="preserve">
+    <value>Future Advanced Internet Solutions</value>
+  </data>
+  <data name="Get exciting discounts. Apply promo 'Winter50'" xml:space="preserve">
+    <value>Get exciting discounts. Apply promo 'Winter50'</value>
+  </data>
+  <data name="Have Promo/Voucher ?" xml:space="preserve">
+    <value>Have Promo/Voucher ?</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="In Stock" xml:space="preserve">
+    <value>In Stock</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Invalid login attempt." xml:space="preserve">
+    <value>Invalid login attempt.</value>
+  </data>
+  <data name="Invalid promo/voucher." xml:space="preserve">
+    <value>Invalid promo/voucher.</value>
+  </data>
+  <data name="JOD" xml:space="preserve">
+    <value>JOD</value>
+  </data>
+  <data name="Jomlah Jo" xml:space="preserve">
+    <value>Jomlah Jo</value>
+  </data>
+  <data name="Jomlah Jo Have Everything You desire" xml:space="preserve">
+    <value>Jomlah Jo Have Everything You desire</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Lastname" xml:space="preserve">
+    <value>Lastname</value>
+  </data>
+  <data name="Latest Products" xml:space="preserve">
+    <value>Latest Products</value>
+  </data>
+  <data name="Leave your Comment" xml:space="preserve">
+    <value>Leave your Comment</value>
+  </data>
+  <data name="Like And Get in Touch on Facebook" xml:space="preserve">
+    <value>Like And Get in Touch on Facebook</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LOGIN TO ACCOUNT" xml:space="preserve">
+    <value>LOGIN TO ACCOUNT</value>
+  </data>
+  <data name="Login With" xml:space="preserve">
+    <value>Login With</value>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>LogOff</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Message Us on WhatsApp" xml:space="preserve">
+    <value>Message Us on WhatsApp</value>
+  </data>
+  <data name="Middlename" xml:space="preserve">
+    <value>Middlename</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="New to our website?" xml:space="preserve">
+    <value>New to our website?</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="No categories available." xml:space="preserve">
+    <value>No categories available.</value>
+  </data>
+  <data name="No comments found." xml:space="preserve">
+    <value>No comments found.</value>
+  </data>
+  <data name="No Orders found." xml:space="preserve">
+    <value>No Orders found.</value>
+  </data>
+  <data name="No products in the cart" xml:space="preserve">
+    <value>No products in the cart</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="Order Amount" xml:space="preserve">
+    <value>Order Amount</value>
+  </data>
+  <data name="Order Details" xml:space="preserve">
+    <value>Order Details</value>
+  </data>
+  <data name="Order History" xml:space="preserve">
+    <value>Order History</value>
+  </data>
+  <data name="Order ID" xml:space="preserve">
+    <value>Order ID</value>
+  </data>
+  <data name="Order Status" xml:space="preserve">
+    <value>Order Status</value>
+  </data>
+  <data name="Order Unique Code" xml:space="preserve">
+    <value>Order Unique Code</value>
+  </data>
+  <data name="Orders" xml:space="preserve">
+    <value>Orders</value>
+  </data>
+  <data name="orders section in profile" xml:space="preserve">
+    <value>orders section in profile</value>
+  </data>
+  <data name="Our Jordanian Webstore" xml:space="preserve">
+    <value>Our Jordanian Webstore</value>
+  </data>
+  <data name="Out Of Stock" xml:space="preserve">
+    <value>Out Of Stock</value>
+  </data>
+  <data name="Overall Average" xml:space="preserve">
+    <value>Overall Average</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Pay via Cash On Delivery" xml:space="preserve">
+    <value>Pay via Cash On Delivery</value>
+  </data>
+  <data name="Pay via Credit Card" xml:space="preserve">
+    <value>Pay via Credit Card</value>
+  </data>
+  <data name="Payment Method" xml:space="preserve">
+    <value>Payment Method</value>
+  </data>
+  <data name="Phone Number" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
+  <data name="Place Order" xml:space="preserve">
+    <value>Place Order</value>
+  </data>
+  <data name="Placed On Date" xml:space="preserve">
+    <value>Placed On Date</value>
+  </data>
+  <data name="Please check your email to reset your password." xml:space="preserve">
+    <value>Please check your email to reset your password.</value>
+  </data>
+  <data name="Please Select Country Code" xml:space="preserve">
+    <value>Please Select Country Code</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="Price Range" xml:space="preserve">
+    <value>Price Range</value>
+  </data>
+  <data name="Print Invoice" xml:space="preserve">
+    <value>Print Invoice</value>
+  </data>
+  <data name="Privacy Policy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="Product Categories" xml:space="preserve">
+    <value>Product Categories</value>
+  </data>
+  <data name="Product Descreption" xml:space="preserve">
+    <value>Product Descreption</value>
+  </data>
+  <data name="Product Reviews" xml:space="preserve">
+    <value>Product Reviews</value>
+  </data>
+  <data name="Product Specification" xml:space="preserve">
+    <value>Product Specification</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="Quick Links" xml:space="preserve">
+    <value>Quick Links</value>
+  </data>
+  <data name="Recover Account" xml:space="preserve">
+    <value>Recover Account</value>
+  </data>
+  <data name="Refund Policy" xml:space="preserve">
+    <value>Refund Policy</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Related Products" xml:space="preserve">
+    <value>Related Products</value>
+  </data>
+  <data name="Remmeber Me" xml:space="preserve">
+    <value>Remmeber Me</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Reset your password." xml:space="preserve">
+    <value>Reset your password.</value>
+  </data>
+  <data name="Review your profile" xml:space="preserve">
+    <value>Review your profile</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Search by OrderID" xml:space="preserve">
+    <value>Search by OrderID</value>
+  </data>
+  <data name="Search Filters" xml:space="preserve">
+    <value>Search Filters</value>
+  </data>
+  <data name="Search Latest Products on Jomlah Jo" xml:space="preserve">
+    <value>Search Latest Products on Jomlah Jo</value>
+  </data>
+  <data name="Search Products" xml:space="preserve">
+    <value>Search Products</value>
+  </data>
+  <data name="Select Avatar" xml:space="preserve">
+    <value>Select Avatar</value>
+  </data>
+  <data name="Select by Order Status" xml:space="preserve">
+    <value>Select by Order Status</value>
+  </data>
+  <data name="Send Message" xml:space="preserve">
+    <value>Send Message</value>
+  </data>
+  <data name="Shop with us now" xml:space="preserve">
+    <value>Shop with us now</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Sorry! We can not track your order details." xml:space="preserve">
+    <value>Sorry! We can not track your order details.</value>
+  </data>
+  <data name="Sorry. No Products found." xml:space="preserve">
+    <value>Sorry. No Products found.</value>
+  </data>
+  <data name="Sorry. This promo/voucher has expired." xml:space="preserve">
+    <value>Sorry. This promo/voucher has expired.</value>
+  </data>
+  <data name="Sort By: Latest Products" xml:space="preserve">
+    <value>Sort By: Latest Products</value>
+  </data>
+  <data name="Sort By: Product Names" xml:space="preserve">
+    <value>Sort By: Product Names</value>
+  </data>
+  <data name="Stars" xml:space="preserve">
+    <value>Stars</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Style" xml:space="preserve">
+    <value>../../Content/templates/aroma/css/style.css</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="Subscribe Us on YouTube" xml:space="preserve">
+    <value>Subscribe Us on YouTube</value>
+  </data>
+  <data name="Terms &amp; Conditions" xml:space="preserve">
+    <value>Terms &amp; Conditions</value>
+  </data>
+  <data name="Test" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="Thank you for confirming your email. Please" xml:space="preserve">
+    <value>Thank you for confirming your email. Please</value>
+  </data>
+  <data name="Thank You. Your order has been placed. You can access your order details anytime in your" xml:space="preserve">
+    <value>Thank You. Your order has been placed. You can access your order details anytime in your</value>
+  </data>
+  <data name="Thanks." xml:space="preserve">
+    <value>Thanks.</value>
+  </data>
+  <data name="There are no comments on this products." xml:space="preserve">
+    <value>There are no comments on this products.</value>
+  </data>
+  <data name="to" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="to be updated with all our hot offers" xml:space="preserve">
+    <value>to be updated with all our hot offers</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="Track Order" xml:space="preserve">
+    <value>Track Order</value>
+  </data>
+  <data name="Tracking" xml:space="preserve">
+    <value>Tracking</value>
+  </data>
+  <data name="Tweet And Follow on Twitter" xml:space="preserve">
+    <value>Tweet And Follow on Twitter</value>
+  </data>
+  <data name="Up To 50% Off" xml:space="preserve">
+    <value>Up To 50% Off</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Updated On" xml:space="preserve">
+    <value>Updated On</value>
+  </data>
+  <data name="Use a local account to log in." xml:space="preserve">
+    <value>Use a local account to log in.</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us." xml:space="preserve">
+    <value>We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us.</value>
+  </data>
+  <data name="We serve customers everywhere in Jordan, welcomed with great openness." xml:space="preserve">
+    <value>We serve customers everywhere in Jordan, welcomed with great openness.</value>
+  </data>
+  <data name="Welcome To" xml:space="preserve">
+    <value>Welcome To</value>
+  </data>
+  <data name="Welcome to Jomlah Jo, your number one source for all things. We're dedicated to give you the very best of products you may need." xml:space="preserve">
+    <value>Welcome to Jomlah Jo, your number one source for all things. We're dedicated to give you the very best of products you may need.</value>
+  </data>
+  <data name="Winter Sale" xml:space="preserve">
+    <value>Winter Sale</value>
+  </data>
+  <data name="Write your comment here." xml:space="preserve">
+    <value>Write your comment here.</value>
+  </data>
+  <data name="You can check the status of your order. Please enter the order ID and you will get information related to your order." xml:space="preserve">
+    <value>You can check the status of your order. Please enter the order ID and you will get information related to your order.</value>
+  </data>
+  <data name="You do not have a local username/password for this site. Add a local account so you can log in without an external login." xml:space="preserve">
+    <value>You do not have a local username/password for this site. Add a local account so you can log in without an external login.</value>
+  </data>
+  <data name="You need to login to leave comments." xml:space="preserve">
+    <value>You need to login to leave comments.</value>
+  </data>
+  <data name="Your Cart" xml:space="preserve">
+    <value>Your Cart</value>
+  </data>
+  <data name="Your order has been placed." xml:space="preserve">
+    <value>Your order has been placed.</value>
+  </data>
+  <data name="Your password has been reset. Please" xml:space="preserve">
+    <value>Your password has been reset. Please</value>
+  </data>
+  <data name="Your Rating" xml:space="preserve">
+    <value>Your Rating</value>
+  </data>
+  <data name="Your total bill is" xml:space="preserve">
+    <value>Your total bill is</value>
+  </data>
+  <data name="Zip Code is required." xml:space="preserve">
+    <value>Zip Code is required.</value>
+  </data>
+  <data name="ZipCode" xml:space="preserve">
+    <value>ZipCode</value>
+  </data>
+</root>

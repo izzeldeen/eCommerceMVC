@@ -1,0 +1,33 @@
+﻿
+@model eCommerceMVC.Areas.Dashboard.ViewModels.ManagerViewModel
+
+<div class="jumbotron jumbotron-fluid my-0">
+    <div class="container">
+        <h1 class="display-4">Hello, @User.Identity.Name!</h1>
+        <p class="lead">
+            Welcome to Jomlah Jo Dashboard. Below are a few demographics.
+        </p>
+    </div>
+</div>
+
+<div class="card-deck text-primary mt-4">
+
+    <div class="card text-center ">
+        <h1 class="card-title display-2 align-middle">
+            @Model.EntryOneProductsCount
+        </h1>
+        <div class="card-footer display-4">
+            <a href="@Url.EntryDetails(Model.EntryOneId)">Abyan Nimri Products</a>
+        </div>
+    </div>
+
+    <div class="card text-center ">
+        <h1 class="card-title display-2 align-middle">
+            @Model.EntryTwoProductsCount
+        </h1>
+        <div class="card-footer display-4">
+            <a href="@Url.EntryDetails(Model.EntryTwoId)">Noor Abdullat Products</a>
+        </div>
+    </div>
+
+</div>

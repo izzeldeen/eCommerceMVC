@@ -1,0 +1,247 @@
+﻿@using eCommerceMVC.Resources
+@{
+    var currentDate = DateTime.Now;
+
+    decimal finalAmount = 0M;
+
+    if (TempData["FinalAmount"] != null)
+    {
+        finalAmount = decimal.Parse(TempData["FinalAmount"].ToString());
+    }
+    //else
+    //{
+    //    finalAmount = 0;
+    //}
+
+    var creditModel = new { Amount = finalAmount };
+}
+<div class="alert alert-success" role="alert">
+    Your total bill is @finalAmount.WithCurrency()
+</div>
+<div class="accordion" id="paymentOptions">
+    @if (ConfigurationsHelper.EnableCreditCardPayment)
+    {
+        <div class="card" data-toggle="collapse" data-target="#creditCardsContainer" style="cursor:pointer">
+            <div class="card-header">
+                <h2 class="mb-0">
+                    <span class="btn btn-link collapsed" data-toggle="collapse" data-target="#creditCardsContainer" aria-expanded="false">
+                        @Resources.Pay_via_Credit_Card
+                    </span>
+                    <img src="~/Content/images/site/Major-Credit-Card-Logo-PNG-Clipart.png" class="rounded float-right img-fluid" style="height:40px">
+                </h2>
+            </div>
+            <div id="creditCardsContainer" class="collapse" data-parent="#paymentOptions" style="">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="root"></div>
+                           <button type="button" onclick="Navigate();" class="btn btn-success btn-lg btn-block">@Resources.Checkout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+
+    @if (false)
+    {
+        //PayPal payment disabled due to PayPal API changes.
+        //https://developer.paypal.com/docs/release-notes/release-notes-2019/#july
+
+        <div class="card">
+            <div class="card-header">
+                <h2 class="mb-0">
+
+                    <button class="btn btn-link float-left collapsed" type="button" data-toggle="collapse" data-target="#paypalContainer" aria-expanded="false">
+                        Pay via PayPal
+                    </button>
+                    <img src="~/Content/images/site/PayPal-Logo.png" class="rounded float-right img-fluid" style="height:40px">
+                </h2>
+            </div>
+            <div id="paypalContainer" class="collapse" data-parent="#paymentOptions" style="">
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (ConfigurationsHelper.EnableCashOnDeliveryMethod)
+    {
+        <div class="card" style="cursor:pointer" data-toggle="collapse" data-target="#cashOnDeliveryContainer">
+            <div class="card-header">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#cashOnDeliveryContainer" aria-expanded="false">
+                        @Resources.Pay_via_Cash_On_Delivery
+                    </button>
+                    <img src="~/Content/images/site/cod.png" class="rounded float-right img-fluid" style="height:40px; cursor:pointer" data-toggle="collapse" data-target="#cashOnDeliveryContainer">
+                </h2>
+            </div>
+            <div id="cashOnDeliveryContainer" class="collapse" data-parent="#paymentOptions" style="">
+                <div class="card-body">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-border m-5 p-5" role="status" id="cashOnDeliveryLoader" style="display:none">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <button type="button" id="submitCashOnDelivery" class="btn btn-success btn-lg btn-block">@Resources.Place_Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    //$("#creditCardForm").validate({
+    //    errorClass: "alert alert-danger",
+    //    errorElement: "div",
+    //    rules: {
+    //        CCName: {
+    //            required: true,
+    //        },
+    //        CCCardNumber: {
+    //            required: true,
+    //            number: true
+    //        },
+    //        CCExpiryMonth: {
+    //            required: true,
+    //        },
+    //        CCExpiryYear: {
+    //            required: true,
+    //        },
+    //        CCCVC: {
+    //            required: true,
+    //            number: true
+    //        },
+    //    },
+    //    messages: {
+    //        CCName: {
+    //            required: "Card Holder Name is required."
+    //        },
+    //        CCCardNumber: {
+    //            required: "Card Number is required.",
+    //            number: "Card Number must be numeric."
+    //        },
+    //        CCExpiryMonth: {
+    //            required: "Card Expiry Month is required.",
+    //        },
+    //        CCExpiryYear: {
+    //            required: "Card Expiry Year is required.",
+    //        },
+    //        CCCVC: {
+    //            required: "CVC number is required.",
+    //            number: "CVC must be numeric."
+    //        },
+    //    },
+    //    highlight: function (element, errorClass) {
+    //        $(element).removeClass(errorClass);
+    //    }
+    //});
+
+    //$("#submitCreditCard").click(submitOrderFormViaCreditCard);
+    $("#submitCashOnDelivery").click(submitOrderFormViaCashOnDelivery);
+
+    @*function submitOrderFormViaCreditCard() {
+        if ($("#deliveryInfoForm").valid()) {
+            if ($("#creditCardForm").valid())
+            {
+                $("#creditCardLoader").show();
+                $("#creditCardForm").hide();
+
+                $.ajax({
+                    url: '@Url.PlaceOrder()',
+                    type: "POST",
+                    data: $("#deliveryInfoForm").serialize()  + "&promoID=" + $("#promoID").val() + "&" + $("#creditCardForm").serialize()
+                })
+                .done(function (response) {
+                    $("#creditCardLoader").hide();
+                    $("#creditCardForm").show();
+
+                    if (response.Success) {
+                        swal("Thanks.", "Your order has been placed.", "success")
+                            .then((value) => {
+                                emptyCart();
+                                window.location.href = "@Url.OrderTrack(orderPlaced:true)" + "&orderid=" + response.Order.ID;
+                            });
+                    }
+                    else {
+                        swal("Errors!", response.Message, "error");
+                    }
+                });
+            }
+            else {
+                swal("Warning!", "Invalid Data!", "warning");
+            }
+        }
+        else {
+            $('a#deliveryInfo', "#checkoutTabs").tab("show");
+        }
+    }*@
+
+    function submitOrderFormViaCashOnDelivery() {
+        if ($("#deliveryInfoForm").valid()) {
+                $("#cashOnDeliveryLoader").show();
+
+                $.ajax({
+                    url: '@Url.PlaceOrder(isCashOnDelivery:true)',
+                    type: "POST",
+                    data: $("#deliveryInfoForm").serialize() + "&promoID=" + $("#promoID").val()
+                })
+                .done(function (response) {
+                    $("#cashOnDeliveryLoader").hide();
+
+                    if (response.Success) {
+                        swal("Thanks.", "Your order has been placed.", "success")
+                            .then((value) => {
+                                emptyCart();
+                                window.location.href = "@Url.OrderTrack(orderPlaced:true)" + "&orderid=" + response.Order.ID;
+                            });
+                    }
+                    else {
+                        swal("Errors!", response.Message, "error");
+                    }
+                });
+        }
+        else {
+            $('a#deliveryInfo', "#checkoutTabs").tab("show");
+        }
+    }
+
+</script>
+
+
+<script>
+
+    function Navigate() {
+
+        if ($("#deliveryInfoForm").valid()) {
+
+            $.ajax({
+                url: '../Orders/CreateDeliveyCookie',
+                type: "POST",
+                data: $("#deliveryInfoForm").serialize() + "&promoID=" + $("#promoID").val()
+            })
+                .done(function (data) {
+                    if (data.message == "Success") {
+                        window.location.href = "../Orders/CreditCardCheckout";
+                    }
+                });
+
+            //$.ajax({
+            //    type: "POST",
+            //    url: "Orders/CreditCardCheckout",
+            //    data: $("#deliveryInfoForm").serialize() + "&promoID=" + $("#promoID").val(),
+            //    success: function (response) {
+
+            //        Console.log(response);
+
+            //    });
+
+        } else {
+            console.log("Something went wrong");
+        }
+    }
+</script>

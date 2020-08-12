@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNet.Identity
+@using eCommerce.Entities
+@using eCommerceMVC.Resources
+
+@model eCommerceMVC.ViewModels.TrackOrderViewModel
+@using eCommerceMVC.Resources
+@if (Model != null)
+{
+    <section class="blog-banner-area">
+        <div class="container h-100">
+            <div class="blog-banner">
+                <div class="text-center">
+                    <h1>@Resources.Tracking</h1>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tracking_box_area section-margin--small">
+        <div class="container">
+            <div class="">
+                <form method="get" action="@Url.OrderTrack()">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">@Resources.Order_ID</span>
+                        </div>
+                        <input type="text" name="orderID" class="form-control" placeholder="@Resources.Enter_Order_ID" value="@Model.OrderID" required>
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">@Resources.Track_Order</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="tracking-holder">
+                @if (Model.OrderID.HasValue)
+                {
+                    Html.RenderPartial("_TrackOrder");
+                }
+            </div>
+        </div>
+    </section>
+}

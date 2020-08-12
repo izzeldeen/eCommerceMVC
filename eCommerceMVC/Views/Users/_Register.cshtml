@@ -1,0 +1,110 @@
+﻿@model eCommerceMVC.ViewModels.RegisterViewModel
+@using eCommerceMVC.Resources
+
+    <form class="row login_form" id="registerForm">
+        @Html.AntiForgeryToken()
+        @*<div class="col-md-12 form-group">
+            <input class="form-control" name="FullName" placeholder="@Resources.FullName" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Resources.FullName'" value="@Model.FullName">
+        </div>*@
+        <div class="col-md-12 form-group">
+            <input class="form-control" name="Username" placeholder="@Resources.Username" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Resources.Username'" value="@Model.Username">
+        </div>
+        <div class="col-md-12 form-group">
+            <input class="form-control" name="Firstname" placeholder="@Resources.Firstname" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Resources.Firstname'">
+        </div>
+        <div class="col-md-12 form-group">
+            <input class="form-control" name="Middlename" placeholder="@Resources.Middlename" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Resources.Middlename'">
+        </div>
+        <div class="col-md-12 form-group">
+            <input class="form-control" name="Lastname" placeholder="@Resources.Lastname" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Resources.Lastname'">
+        </div>
+        <div class="col-md-12">
+            <select name="Countrycode" class="form-control" style="width:100% !important">
+                <option selected disabled style="width:100% !important">@Resources.Please_Select_Country_Code</option>
+                @foreach(var code in Model.CountryCodes)
+                {
+                    <option value="@code.Code" style="width:100% !important">(@code.Code) @code.Countryname</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-12 form-group mt-2">
+            <input class="form-control" name="Phonenumber" placeholder="@Resources.Phone_Number" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Resources.Phone_Number'">
+        </div>
+        <div class="col-md-12 form-group">
+            <input class="form-control" name="Email" placeholder="@Resources.Email" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Resources.Email'" value="@Model.Email">
+        </div>
+        <div class="col-md-12 form-group">
+            <input type="password" class="form-control" name="Password" placeholder="@Resources.Password" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Resources.Password'" id="regPassword">
+        </div>
+        <div class="col-md-12 form-group">
+            <input type="password" class="form-control" name="ConfirmPassword" placeholder="@Resources.Confirm_Password" onfocus="this.placeholder = ''" onblur="this.placeholder = '@Resources.Confirm_Password'">
+        </div>
+        <div class="col-md-12 form-group">
+            <div class="creat_account">
+                <input type="checkbox" name="RememberMe" value="true" id="RememberMe" checked>
+                <input type="hidden" name="RememberMe" value="false">
+                <label class="form-check-label" for="RememberMe">
+                    @Resources.Remmeber_Me
+                </label>
+            </div>
+        </div>
+        <div class="col-md-12 form-group errorsRow" style="display:none">
+            <div class="alert alert-danger errorMessages mb-0" role="alert"></div>
+        </div>
+        <div class="col-md-12 form-group">
+            <button type="submit" id="registerButton" class="button button-login w-100">@Resources.Register</button>
+        </div>
+    </form>
+
+<script>
+    validateRegisterForm();
+
+    $("#registerForm").submit(function (e) {
+        submitForm();
+
+        e.preventDefault();
+    });
+
+    //$("#registerButton").click(function () {
+    //    submitForm();
+    //});
+
+    function submitForm() {
+        $(".errorsRow .errorMessages", "#registerForm").html("");
+        $(".errorsRow", "#registerForm").hide(200);
+        $(".errorsRow .errorMessages", "#registerForm").hide();
+
+        if ($("#registerForm").valid()) {
+            $(".floader", "#registerForm").show();
+            $(".response-holder", "#registerForm").hide();
+
+            $.ajax({
+                url: "@Url.Register()",
+                type: "post",
+                data: $("#registerForm").serialize(),
+            })
+            .done(function (response) {
+                if (response != null && response.Success) {
+                    window.location.href = "/";
+                }
+                else {
+                    $(".errorsRow .errorMessages", "#registerForm").html(response.Messages);
+                    $(".errorsRow", "#registerForm").show(200);
+                    $(".errorsRow .errorMessages", "#registerForm").show();
+                    $(".floader", "#registerForm").hide();
+                    $(".response-holder", "#registerForm").show();
+                }
+             })
+             .fail(function(jqXHR, textStatus, errorThrown) {
+                 $(".floader", "#registerForm").hide();
+                 $(".response-holder", "#registerForm").show();
+
+                 swal("Error!", "An error has occured.", "error");
+
+                 console.log('jqXHR:' + jqXHR);
+                 console.log('textStatus:' + textStatus);
+                 console.log('errorThrown:' + errorThrown);
+             });
+        }
+    }
+</script>

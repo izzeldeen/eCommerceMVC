@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BB1A03C3-5946-4F44-ADE2-5677D9E219EB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>eCommerce.Data</RootNamespace>
+    <AssemblyName>eCommerce.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="eCommerceContext.cs" />
+    <Compile Include="eCommerceDBInitializer.cs" />
+    <Compile Include="Migrations\201905141928445_initialized.cs" />
+    <Compile Include="Migrations\201905141928445_initialized.Designer.cs">
+      <DependentUpon>201905141928445_initialized.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905170643522_ProductPriceAndModifiedOn.cs" />
+    <Compile Include="Migrations\201905170643522_ProductPriceAndModifiedOn.Designer.cs">
+      <DependentUpon>201905170643522_ProductPriceAndModifiedOn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905181125282_displayseqno.cs" />
+    <Compile Include="Migrations\201905181125282_displayseqno.Designer.cs">
+      <DependentUpon>201905181125282_displayseqno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906061358282_partial-ORDER-WORK.cs" />
+    <Compile Include="Migrations\201906061358282_partial-ORDER-WORK.Designer.cs">
+      <DependentUpon>201906061358282_partial-ORDER-WORK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906061400291_partial-ORDER-WORK-2.cs" />
+    <Compile Include="Migrations\201906061400291_partial-ORDER-WORK-2.Designer.cs">
+      <DependentUpon>201906061400291_partial-ORDER-WORK-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906212046154_orderDetailsChanges.cs" />
+    <Compile Include="Migrations\201906212046154_orderDetailsChanges.Designer.cs">
+      <DependentUpon>201906212046154_orderDetailsChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906261411399_userIDinOrders.cs" />
+    <Compile Include="Migrations\201906261411399_userIDinOrders.Designer.cs">
+      <DependentUpon>201906261411399_userIDinOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906281853323_transactionIDinOrders.cs" />
+    <Compile Include="Migrations\201906281853323_transactionIDinOrders.Designer.cs">
+      <DependentUpon>201906281853323_transactionIDinOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911101800565_ProductSpecifications.cs" />
+    <Compile Include="Migrations\201911101800565_ProductSpecifications.Designer.cs">
+      <DependentUpon>201911101800565_ProductSpecifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911131054231_Promos.cs" />
+    <Compile Include="Migrations\201911131054231_Promos.Designer.cs">
+      <DependentUpon>201911131054231_Promos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911131204243_PromosUniqueCode.cs" />
+    <Compile Include="Migrations\201911131204243_PromosUniqueCode.Designer.cs">
+      <DependentUpon>201911131204243_PromosUniqueCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002251202468_CostColumn.cs" />
+    <Compile Include="Migrations\202002251202468_CostColumn.Designer.cs">
+      <DependentUpon>202002251202468_CostColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002260934543_supplierTable.cs" />
+    <Compile Include="Migrations\202002260934543_supplierTable.Designer.cs">
+      <DependentUpon>202002260934543_supplierTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002261114552_supplierCloumn.cs" />
+    <Compile Include="Migrations\202002261114552_supplierCloumn.Designer.cs">
+      <DependentUpon>202002261114552_supplierCloumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002261116277_editColName.cs" />
+    <Compile Include="Migrations\202002261116277_editColName.Designer.cs">
+      <DependentUpon>202002261116277_editColName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002261126003_testest.cs" />
+    <Compile Include="Migrations\202002261126003_testest.Designer.cs">
+      <DependentUpon>202002261126003_testest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002291151383_addCostsTable.cs" />
+    <Compile Include="Migrations\202002291151383_addCostsTable.Designer.cs">
+      <DependentUpon>202002291151383_addCostsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002291216268_addCostsTableTest.cs" />
+    <Compile Include="Migrations\202002291216268_addCostsTableTest.Designer.cs">
+      <DependentUpon>202002291216268_addCostsTableTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003010738417_arabicColumns.cs" />
+    <Compile Include="Migrations\202003010738417_arabicColumns.Designer.cs">
+      <DependentUpon>202003010738417_arabicColumns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003010750095_arabicColumnsEdit.cs" />
+    <Compile Include="Migrations\202003010750095_arabicColumnsEdit.Designer.cs">
+      <DependentUpon>202003010750095_arabicColumnsEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003051022453_userIdColumn.cs" />
+    <Compile Include="Migrations\202003051022453_userIdColumn.Designer.cs">
+      <DependentUpon>202003051022453_userIdColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004052118542_ar.cs" />
+    <Compile Include="Migrations\202004052118542_ar.Designer.cs">
+      <DependentUpon>202004052118542_ar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006230804500_outofstock.cs" />
+    <Compile Include="Migrations\202006230804500_outofstock.Designer.cs">
+      <DependentUpon>202006230804500_outofstock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006230809386_outofstockFalse.cs" />
+    <Compile Include="Migrations\202006230809386_outofstockFalse.Designer.cs">
+      <DependentUpon>202006230809386_outofstockFalse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007050839282_PaymentStuff.cs" />
+    <Compile Include="Migrations\202007050839282_PaymentStuff.Designer.cs">
+      <DependentUpon>202007050839282_PaymentStuff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpecificationEvaluator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\eCommerce.Entities\eCommerce.Entities.csproj">
+      <Project>{247BECA4-26F3-433F-B197-4798A0F1CD13}</Project>
+      <Name>eCommerce.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201905141928445_initialized.resx">
+      <DependentUpon>201905141928445_initialized.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905170643522_ProductPriceAndModifiedOn.resx">
+      <DependentUpon>201905170643522_ProductPriceAndModifiedOn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905181125282_displayseqno.resx">
+      <DependentUpon>201905181125282_displayseqno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906061358282_partial-ORDER-WORK.resx">
+      <DependentUpon>201906061358282_partial-ORDER-WORK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906061400291_partial-ORDER-WORK-2.resx">
+      <DependentUpon>201906061400291_partial-ORDER-WORK-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906212046154_orderDetailsChanges.resx">
+      <DependentUpon>201906212046154_orderDetailsChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906261411399_userIDinOrders.resx">
+      <DependentUpon>201906261411399_userIDinOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906281853323_transactionIDinOrders.resx">
+      <DependentUpon>201906281853323_transactionIDinOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911101800565_ProductSpecifications.resx">
+      <DependentUpon>201911101800565_ProductSpecifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911131054231_Promos.resx">
+      <DependentUpon>201911131054231_Promos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911131204243_PromosUniqueCode.resx">
+      <DependentUpon>201911131204243_PromosUniqueCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002251202468_CostColumn.resx">
+      <DependentUpon>202002251202468_CostColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002260934543_supplierTable.resx">
+      <DependentUpon>202002260934543_supplierTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002261114552_supplierCloumn.resx">
+      <DependentUpon>202002261114552_supplierCloumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002261116277_editColName.resx">
+      <DependentUpon>202002261116277_editColName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002261126003_testest.resx">
+      <DependentUpon>202002261126003_testest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002291151383_addCostsTable.resx">
+      <DependentUpon>202002291151383_addCostsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002291216268_addCostsTableTest.resx">
+      <DependentUpon>202002291216268_addCostsTableTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003010738417_arabicColumns.resx">
+      <DependentUpon>202003010738417_arabicColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003010750095_arabicColumnsEdit.resx">
+      <DependentUpon>202003010750095_arabicColumnsEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003051022453_userIdColumn.resx">
+      <DependentUpon>202003051022453_userIdColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004052118542_ar.resx">
+      <DependentUpon>202004052118542_ar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006230804500_outofstock.resx">
+      <DependentUpon>202006230804500_outofstock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006230809386_outofstockFalse.resx">
+      <DependentUpon>202006230809386_outofstockFalse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007050839282_PaymentStuff.resx">
+      <DependentUpon>202007050839282_PaymentStuff.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,12 @@
+﻿@using eCommerceMVC.Resources
+
+@{
+    ViewBag.Title = Resources.Confirm_Email;
+}
+
+<h2>@Resources.Confirm_Email.</h2>
+<div>
+    <p>
+        @Resources.Thank_you_for_confirming_your_email__Please @Html.ActionLink(Resources.Click_here_to_Log_in, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+    </p>
+</div>

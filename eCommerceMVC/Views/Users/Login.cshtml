@@ -1,0 +1,25 @@
+﻿@using eCommerceMVC.ViewModels
+@using eCommerceMVC.Resources
+
+<section class="login_box_area section-margin--small">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="login_box_img">
+                    <div class="hover">
+                        <h4>@Resources.New_to_our_website_</h4>
+                        <p>@Resources.Our_Jordanian_Webstore</p>
+                        <a class="button button-account" href="@Url.Register()">@Resources.Create_an_Account</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="login_form_inner">
+                    <h3>@Resources.LOGIN_TO_ACCOUNT</h3>
+                    @Html.Partial("_Login")
+                    @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

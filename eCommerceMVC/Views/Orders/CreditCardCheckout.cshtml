@@ -1,0 +1,162 @@
+﻿@using eCommerceMVC.Resources
+@using eCommerce.Entities;
+@model eCommerceMVC.ViewModels.CreditCardInfoViewModel
+
+
+
+<section class="blog-banner-area">
+    <div class="container h-100">
+        <div class="blog-banner">
+            <div class="text-center">
+                <h1>@Resources.Checkout</h1>
+                <p>
+                    @Resources.Checkout_your_products
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="tracking_box_area section-margin--small">
+    <div class="container">
+        <div id="tracking-holder">
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border m-5" role="status" id="dtLoader" style="display:none">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            <div id="response-holder">
+                <div id="root"></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        goSell.openLightBox();
+    });
+
+    var itemsArray = new Array();
+    let obj = {};
+    var model = '@Html.Raw(Json.Encode(Model.OrderItems))';
+    var data = JSON.parse(model);
+
+
+    data.forEach(function (arrayItem) {
+
+        var toDollarItem = arrayItem.ItemPrice * 1.4088;
+
+
+        obj.id = arrayItem.ProductID;
+        obj.name = arrayItem.ProductName;
+        obj.description = "";
+        obj.quantity = arrayItem.Quantity;
+        obj.amount_per_unit = toDollarItem;
+        obj.total_amount = toDollarItem * arrayItem.Quantity;
+        itemsArray.push(obj);
+    });
+
+    console.log(itemsArray);
+
+    var toDollar = @Model.FinalAmmount * 1.4088;
+    goSell.config({
+        containerID: "root",
+        gateway: {
+            publicKey: "pk_live_Inb1RHdjBF4caPhZWKC87SOV",
+            language: "en",
+            contactInfo: true,
+            supportedPaymentMethods: "all",
+            saveCardOption: true,
+            customerCards: true,
+            notifications: 'standard',
+            callback: (response) => {
+                console.log(response);
+            },
+            onClose: () => {
+                goSell.closeLightBox();
+            },
+            backgroundImg: {
+                url: 'imgURL',
+                opacity: '0.5'
+            },
+            labels: {
+                cardNumber: "Card Number",
+                expirationDate: "MM/YY",
+                cvv: "CVV",
+                cardHolder: "Name on Card",
+                actionButton: "Pay"
+            },
+            style: {
+                base: {
+                    color: '#535353',
+                    lineHeight: '18px',
+                    fontFamily: 'sans-serif',
+                    fontSmoothing: 'antialiased',
+                    fontSize: '16px',
+                    '::placeholder': {
+                        color: 'rgba(0, 0, 0, 0.26)',
+                        fontSize: '15px'
+                    }
+                },
+                invalid: {
+                    color: 'red',
+                    iconColor: '#fa755a '
+                }
+            }
+        },
+        customer: {
+            id: "@Model.TapId",
+            first_name: "@Model.Firstname",
+            middle_name: "@Model.Middlename",
+            last_name: "@Model.Lastname",
+            email: "@Model.CustomerEmail",
+            phone: {
+                country_code: "@Model.CountryCode",
+                number: "@Model.CustomerPhone"
+            }
+        },
+        order: {
+            amount: toDollar,
+            currency: "USD",
+            items: itemsArray,
+            shipping: null,
+            taxes: null
+        },
+        transaction: {
+            mode: 'charge',
+            charge: {
+                saveCard: true,
+                threeDSecure: true,
+                description: "Test Description",
+                statement_descriptor: "Sample",
+                reference: {
+                    transaction: "txn_0001",
+                    order: "ord_0001"
+                },
+                metadata: {},
+                receipt: {
+                    email: true,
+                    sms: true
+                }
+            },
+          post: null,
+          redirect: {
+            url: "https://jomlahjo.com/Orders/PlaceOrder"
+          }
+        }
+    });
+
+    goSell.showResult({
+        callback: response => {
+            console.log(response.id);
+        }
+    });
+</script>

@@ -1,0 +1,163 @@
+﻿@model eCommerceMVC.ViewModels.PageViewModel
+@using eCommerceMVC.Resources
+
+<section class="blog-banner-area">
+    <div class="container h-100">
+        <div class="blog-banner">
+            <div class="text-center">
+                <h2>@Resources.Contact_Us</h2>
+                <p>
+                    @Resources.Contact_Jomlah_Jo_Team_
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-margin--small mb-5">
+    <div class="container">
+        <form class="mb-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">
+                            @Resources.Subject
+                        </label>
+                        <input type="text" class="form-control" id="name" placeholder="" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">
+                            @Resources.Name
+                        </label>
+                        <input type="text" class="form-control" id="name" placeholder="" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">
+                            @Resources.Email
+                        </label>
+                        <input type="text" class="form-control" id="name" placeholder="" required="required">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">
+                            @Resources.Message
+                        </label>
+                        <textarea name="message" id="message" class="form-control" rows="8" cols="25" required="required" placeholder="@Resources.Message"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                        <i class="fas fa-paper-plane mr-1"></i> @Resources.Send_Message
+                    </button>
+                </div>
+            </div>
+        </form>
+        <hr />
+    </div>
+</section>
+<section class="mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col col-12">
+                <div class="card-deck">
+                    <div class="card text-white text-center p-3" style="background-color:#fc7978">
+                        <p class="display-4">
+                            <i class="fas fa-envelope"></i>
+                        </p>
+                        <hr />
+                        <a href="mailto://@ConfigurationsHelper.EmailAddress" class="text-white" target="_blank" rel="nofollow">
+                            @ConfigurationsHelper.EmailAddress
+                        </a>
+                    </div>
+                    <div class="card text-white text-center p-3" style="background-color:#de6b35">
+                        <p class="display-4">
+                            <i class="fas fa-phone"></i>
+                        </p>
+                        <hr />
+                        <a href="tel://@ConfigurationsHelper.PhoneNumber" class="text-white" target="_blank" rel="nofollow">
+                            @ConfigurationsHelper.PhoneNumber
+                        </a>
+                    </div>
+                    <div class="card text-white text-center p-3" style="background-color:#745c97">
+                        <p class="display-4">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </p>
+                        <hr />
+                        <a href="#" class="text-white" target="_blank" rel="nofollow">
+                            @Html.Raw(ConfigurationsHelper.Address)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-4">
+            <div class="col col-12">
+                <div class="card-deck">
+                    <div class="card bg-primary text-white text-center p-3">
+                        <p class="display-4">
+                            <i class="fab fa-facebook-f"></i>
+                        </p>
+                        <hr />
+                        <a href="@ConfigurationsHelper.FacebookURL" class="text-white" target="_blank" rel="nofollow">
+                            @Resources.Like_And_Get_in_Touch_on_Facebook
+                        </a>
+                    </div>
+                    <div class="card bg-info text-white text-center p-3">
+                        <p class="display-4">
+                            <i class="fab fa-twitter"></i>
+                        </p>
+                        <hr />
+                        <a href="@ConfigurationsHelper.TwitterURL" class="text-white" target="_blank" rel="nofollow">
+                            @Resources.Tweet_And_Follow_on_Twitter
+                        </a>
+                    </div>
+                    <div class="card bg-success text-white text-center p-3">
+                        <p class="display-4">
+                            <i class="fab fa-whatsapp"></i>
+                        </p>
+                        <hr />
+                        <a href="https://wa.me/@ConfigurationsHelper.WhatsAppNumber" class="text-white" target="_blank" rel="nofollow">
+                            @Resources.Message_Us_on_WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-4">
+            <div class="col col-12">
+                <div class="card-deck">
+                    <div class="card bg-secondary text-white text-center p-3">
+                        <p class="display-4">
+                            <i class="fab fa-instagram"></i>
+                        </p>
+                        <hr />
+                        <a href="@ConfigurationsHelper.InstagramURL" class="text-white" target="_blank" rel="nofollow">
+                            @Resources.Follow_Us_on_Instagram
+                        </a>
+                    </div>
+                    <div class="card bg-danger text-white text-center p-3">
+                        <p class="display-4">
+                            <i class="fab fa-youtube"></i>
+                        </p>
+                        <hr />
+                        <a href="@ConfigurationsHelper.YouTubeURL" class="text-white" target="_blank" rel="nofollow">
+                            @Resources.Subscribe_Us_on_YouTube
+                        </a>
+                    </div>
+                    <div class="card bg-primary text-white text-center p-3">
+                        <p class="display-4">
+                            <i class="fab fa-linkedin-in"></i>
+                        </p>
+                        <hr />
+                        <a href="@ConfigurationsHelper.LinkedInURL" class="text-white" target="_blank" rel="nofollow">
+                            @Resources.Connect_Us_on_LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

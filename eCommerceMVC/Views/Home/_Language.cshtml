@@ -1,0 +1,21 @@
+﻿@using eCommerceMVC.Resources
+
+<li class="nav-item submenu dropdown" title="">
+    <i class="fas fa-language mr-1"></i>
+    <a class="nav-link dropdown-toggle" id=""
+       role="button" data-toggle="dropdown">
+        @Resources.Language
+    </a>
+    <ul class="dropdown-menu">
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("SelectLanguage", "Home", new {SelectedLanguage = "ar"})">
+                العربية
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="@Url.Action("SelectLanguage", "Home", new {SelectedLanguage = "en"})">
+                English
+            </a>
+        </li>
+    </ul>
+</li>

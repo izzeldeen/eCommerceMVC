@@ -1,0 +1,61 @@
+﻿@model eCommerceMVC.ViewModels.PageViewModel
+@using eCommerceMVC.Resources
+
+@{
+    var baseModel = Model;
+
+    if (baseModel == null)
+    {
+        baseModel = new eCommerceMVC.ViewModels.PageViewModel();
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="~/Content/templates/aroma/img/Fevicon.png" type="image/png">
+
+    <title>@string.Format("{0} {1} {2}", baseModel.PageTitle, string.IsNullOrEmpty(baseModel.PageTitle) ? "" : "-", ConfigurationsHelper.ApplicationName).Replace("  ", " ").Trim()</title>
+    <meta name="description" content="@baseModel.PageDescription">
+    <meta property="og:title" content="@string.Format("{0} {1} {2}", baseModel.PageTitle, string.IsNullOrEmpty(baseModel.PageTitle) ? "" : "-", ConfigurationsHelper.ApplicationName).Replace("  ", " ").Trim()" />
+    <meta property="og:description" content="@baseModel.PageDescription" />
+    <meta property="og:url" content="@baseModel.PageURL" />
+    <meta property="og:image" content="@baseModel.PageImageURL" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@ConfigurationsHelper.TwitterUsername" />
+    <meta name="twitter:creator" content="@ConfigurationsHelper.TwitterUsername" />
+
+    @foreach (var canonicalURL in baseModel.PageCanonicalURLs)
+    {
+        <link rel="canonical" href="@canonicalURL" />
+    }
+
+    <meta name="robots" content="index, follow" />
+
+    @Html.Partial("_HeaderStylesScripts")
+    @RenderSection("IncludeHeaderStylesScripts", false)
+
+</head>
+<body dir="@Resources.direction">
+
+    @Html.Partial("_TopMenu")
+
+    <main class="site-main pt-60px">
+        @RenderBody()
+    </main>
+
+    @Html.Partial("_Footer")
+
+    @Html.Partial("_FooterStylesScripts")
+    @RenderSection("IncludeFooterStyleScripts", false)
+
+    <input type="hidden" id="cartProducts" value="@Url.CartProducts()" />
+</body>
+
+</html>
+

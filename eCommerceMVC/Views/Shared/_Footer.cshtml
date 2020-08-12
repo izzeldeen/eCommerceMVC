@@ -1,0 +1,94 @@
+﻿@using eCommerceMVC.Resources
+<footer class="footer">
+    <div class="footer-area">
+        <div class="container">
+            <div class="row section_gap">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-footer-widget tp_widgets">
+                           <img src="../../Content/images/jomlahNew.png" style="height:75px; width:230px;">
+
+                        <div class="row">
+                            <div class="col-md-12" style="text-align:left">
+                                @Resources.Our_Jordanian_Webstore
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-footer-widget tp_widgets">
+                        <ul class="list-unstyled text-small">
+                            <li>
+                                <p class="sm-head">
+                                    <span class="m-2 fab fa-facebook-f"></span>
+                                     <a href="@ConfigurationsHelper.FacebookURL" target="_blank" rel="nofollow">Facebook</a> 
+                                </p>
+                            </li>
+                            <li>
+                                <p class="sm-head">
+                                    <span class="m-2 fab fa-twitter"></span>
+                                     <a href="@ConfigurationsHelper.TwitterURL" target="_blank" rel="nofollow">Twitter</a> 
+                                </p>
+                            </li>
+                            <li>
+                                <p class="sm-head">
+                                    <span class="m-2 fab fa-instagram"></span>
+                                     <a href="@ConfigurationsHelper.InstagramURL" target="_blank" rel="nofollow">Instagram</a> 
+                                </p>
+                            </li>
+                            <li>
+                                <p class="sm-head">
+                                    <span class="m-2 fab fa-whatsapp"></span>
+                                     <a href="https://wa.me/@ConfigurationsHelper.WhatsAppNumber" target="_blank" rel="nofollow">WhatsApp</a> 
+                                </p>
+                            </li>
+                            <li>
+                                <p class="sm-head">
+                                    <span class="m-2 fas fa-phone-volume"></span>
+                                     <a class="" href="tel://@ConfigurationsHelper.PhoneNumber">@ConfigurationsHelper.PhoneNumber</a> 
+                                </p>
+                            </li>
+                            <li>
+                                <p class="sm-head">
+                                    <span class="m-2 fas fa-mobile-alt"></span>
+                                     <a class="" href="tel://@ConfigurationsHelper.MobileNumber">@ConfigurationsHelper.MobileNumber</a> 
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-footer-widget tp_widgets">
+                        <ul class="list-unstyled">
+                            <li><i class="m-2 fas fa-user-friends"></i> <a class="" href="@Url.RouteUrl("AboutUs")">@Resources.AboutUs</a></li>
+                            <li><i class="m-2 fas fa-envelope"></i> <a class="" href="@Url.RouteUrl("ContactUs")">@Resources.Contact_Us</a></li>
+                            <li><i class="m-2 fas fa-user-shield"></i> <a class="" href="@Url.RouteUrl("PrivacyPolicy")">@Resources.Privacy_Policy</a></li>
+                            <li><i class="m-2 fas fa-cube"></i> <a class="" href="@Url.RouteUrl("RefundPolicy")">@Resources.Refund_Policy</a></li>
+                            <li><i class="m-2 fas fa-undo"></i> <a class="" href="@Url.RouteUrl("CancellationPolicy")">@Resources.Cancellation_Policy</a></li>
+                            <li><i class="m-2 fas fa-clipboard-list"></i> <a class="" href="@Url.RouteUrl("TermsConditions")">@Resources.Terms___Conditions</a></li>
+                            <li><i class="m-2 fas fa-shopping-cart"></i> <a class="" href="@Url.Checkout()">@Resources.Checkout</a></li>
+                            <li><i class="m-2 fas fa-truck"></i> <a class="" href="@Url.OrderTrack()">@Resources.Tracking</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row d-flex">
+                    <p class="col-lg-6 footer-text text-center text-muted">
+                        <i class="fas fa-copyright text-warning"></i> @DateTime.Now.Year @Resources.Jomlah_Jo. @Resources.By <a href="http://fuais.com/" target="_blank">@Resources.Future_Advanced_Internet_Solutions</a>.
+                        <br />
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        @* Template Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a>. *@
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                    <div class="col-lg-6">
+                        <img src="~/Content/images/site/Major-Credit-Card-Logo-PNG-Clipart.png" class="rounded float-right img-fluid" style="height:60px">
+                    </div>
+                </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,24 @@
+﻿@model eCommerceMVC.ViewModels.PageViewModel
+@using eCommerceMVC.Resources
+
+@{ Html.RenderAction("HomeSliders", "Home"); }
+
+
+@{ Html.RenderAction("FeaturedProducts", "Products", new { pageSize = 8, isForHomePage = true }); }
+
+<section class="offer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5">
+                <div class="offer__content text-center">
+                    <h3 class="shdowText">@Resources.Jomlah_Jo_Have_Everything_You_desire</h3>
+                    <h4 class="shdowText">@Resources.Shop_with_us_now</h4>
+                    <h5 class="shdowText">@Resources.to_be_updated_with_all_our_hot_offers</h5>
+                    <a class="button button--active mt-3 mt-xl-4" href="@Url.Checkout()">@Resources.Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@{ Html.RenderAction("RecentProducts", "Products", new { pageSize = 8, isForHomePage = true }); }
