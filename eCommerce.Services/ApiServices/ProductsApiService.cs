@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -48,6 +49,21 @@ namespace eCommerce.Services.ApiServices
 
 
         #endregion
+
+        public async Task<List<Product>> GetAll()
+        {
+            eCommerceContext context = new eCommerceContext();
+            return await context.Products.Include(x => x.ProductPictures.Select(c => c.Picture)).ToListAsync();
+
+
+        }
+
+        public async Task<Product> GetProductById(int id)
+        {
+            eCommerceContext context = new eCommerceContext();
+            return await context.Products.Include(x => x.ProductPictures.Select(c => c.Picture)).FirstOrDefaultAsync(x=>x.ID == id);
+             }
+
 
         public async Task<IReadOnlyList<Product>> ListAsync(ISpecifications<Product> spec)
         {
@@ -115,6 +131,33 @@ namespace eCommerce.Services.ApiServices
             }
 
             return query.FirstOrDefault();
+
+        }
+
+        public IQueryable<Product> SortByPrice(decimal? from,decimal? to , string search)
+        {
+            eCommerceContext context = new eCommerceContext();
+
+            var Products =  context.Products.AsQueryable();
+
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                Products = Products.Where(x => x.Name.ToLower().Contains(search.ToLower()));
+            }
+            if (from.HasValue && from.Value > 0.0M)
+            {
+                Products = Products.Include(x => x.ProductPictures.Select(a => a.Picture)).Where(x => x.Price >= from.Value);
+            }
+
+            if (to.HasValue && to.Value > 0.0M)
+            {
+                Products = Products.Include(x=>x.ProductPictures.Select(a=>a.Picture)).Where(x => x.Price <= to.Value);
+            }
+
+            return  Products;
+
+
 
         }
 

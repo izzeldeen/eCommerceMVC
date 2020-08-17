@@ -3,6 +3,7 @@ using com.sun.tools.javac.util;
 using eCommerce.Data;
 using eCommerce.Entities;
 using eCommerce.Services;
+using eCommerce.Services.ApiServices;
 using eCommerce.Shared.Extensions;
 using eCommerceMVC.Code.Helpers;
 using eCommerceMVC.ViewModels;
@@ -13,6 +14,7 @@ using Microsoft.AspNet.Identity.Owin;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -22,21 +24,11 @@ namespace Api.Controllers
     public class OrderController : ApiController
     {
        
-        private eCommerceUserManager _userManager;
-
        
 
-        public eCommerceUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.Current.GetOwinContext().GetUserManager<eCommerceUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
+        private OrderApiService orderApiServices = new OrderApiService();
+
+       
 
         public OrderController()
         {
@@ -71,44 +63,25 @@ namespace Api.Controllers
             }
             jsonResult.Data = new { Success = true, Message = string.Format("Order Saved Sucessfully") };
             return jsonResult;
-              } 
+              }
+
         [System.Web.Http.HttpGet]
-        public List<Order> UserOrders(string UserId)
-        {
-            eCommerceContext context = new eCommerceContext();
-
-            var res = context.Orders.Where(x => x.CustomerID == UserId).Include(x => x.Promo).Include(x => x.OrderItems.Select(a => a.Product))
-                 .Include(x => x.OrderHistory).ToList();
+        public async Task<List<Order>> UserOrders(string userId) => await orderApiServices.UserOrders(userId);
 
 
-            return res;
-
-        
-        }
-        public Order GetOrderById (int id)
-        {
-            eCommerceContext context = new eCommerceContext();
-            var res = context.Orders.Include(x => x.Promo).Include(x => x.OrderItems.Select(a=>a.Product))
-                .Include(x => x.OrderHistory)
-                .FirstOrDefault(x => x.ID == id);
-            return res;
-        }
+        public async Task<Order> GetOrderById(int Id) => await orderApiServices.GetOrderById(Id);
+       
         [System.Web.Http.HttpGet]
-        public ApiPrintInvoiceViewModel PrintInvoice(int orderID)
+        public async  Task<ApiPrintInvoiceViewModel> PrintInvoice(int orderID)
         {
-            eCommerceContext context = new eCommerceContext();
+           
             ApiPrintInvoiceViewModel model = new ApiPrintInvoiceViewModel();
-            model.OrderID = orderID;
-            model.Order = context.Orders.Include(x => x.Promo).Include(x => x.OrderItems.Select(a => a.Product))
-                .Include(x => x.OrderHistory)
-                .FirstOrDefault(x => x.ID == orderID);
-
+            
+            model.Order = await orderApiServices.GetOrderById(orderID);
             if (model.Order == null)
-            {
-                return  model;
-            }
-
-               return  model;
+                return null;
+            model.OrderID = orderID;
+             return  model;
         }
 
 

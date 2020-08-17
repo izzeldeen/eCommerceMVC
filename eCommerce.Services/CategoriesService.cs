@@ -37,6 +37,7 @@ namespace eCommerce.Services
 
             return context.Categories.OrderBy(x => x.DisplaySeqNo).ToList();
         }
+        
 
         public List<Category> GetFeaturedCategories(int recordSize = 5)
         {

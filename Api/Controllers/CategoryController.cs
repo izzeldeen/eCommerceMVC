@@ -1,33 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Http;
 using eCommerce.Data;
 using eCommerce.Entities;
 using eCommerce.Services;
+using eCommerce.Services.ApiServices;
 
 namespace Api.Controllers
 {
     public class CategoryController : ApiController
     {
-        private eCommerceContext db = new eCommerceContext();
+      
+        private CategoryApiService CategoryServiceApi = new CategoryApiService();
 
-     
-        
-        
+        public async Task<List<Category>> GetAllCategories() => await CategoryServiceApi.GetAllCategrise();
+        public async Task<Category> GetCategoryById(int Id) => await CategoryServiceApi.GetCategoryById(Id);
         [HttpGet]
-         public List<Category> GetAll() => db.Categories.Include(x=>x.ParentCategory).ToList();
-        [HttpGet]
-        public Category GetCategoryById(int id) => CategoriesService.Instance.GetCategoryByID(id);
-        [HttpGet]
-        public Category SearchCategory(string Search) => CategoriesService.Instance.GetCategoryByName(Search);
-
-
-
-
-
-
-
-
+        public async Task<List<Category>> SearchCategory(string Name) => await CategoryServiceApi.SearchCategory(Name);
+  
     }
 }
