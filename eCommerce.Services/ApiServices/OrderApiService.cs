@@ -17,16 +17,16 @@ namespace eCommerce.Services.ApiServices
             if (userId == null || userId == " ") return null;
             eCommerceContext context = new eCommerceContext();
 
-            return await context.Orders.Where(x => x.CustomerID == userId).Include(x => x.Promo).Include(x => x.OrderItems.Select(a => a.Product))
+            return await context.Orders.Where(x => x.CustomerID == userId).Include(x => x.Promo).Include(x => x.OrderItems.Select(a => a.Product.ProductPictures.Select(f=> f.Picture)))
                  .Include(x => x.OrderHistory).ToListAsync();
 
-        }
 
+        }
         public async Task<Order> GetOrderById(int Id)
         {
             eCommerceContext context = new eCommerceContext();
             return await context.Orders.Include(x => x.Promo).Include(x => x.OrderItems.Select(a => a.Product))
-                .Include(x => x.OrderHistory)
+                .Include(x => x.OrderHistory).Include(x=>x.OrderItems.Select(f =>f.Product.ProductPictures.Select(a=>a.Picture)))
                 .FirstOrDefaultAsync(x => x.ID == Id);
 
 

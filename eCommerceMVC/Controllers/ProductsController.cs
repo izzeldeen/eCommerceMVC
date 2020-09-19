@@ -39,8 +39,6 @@ namespace eCommerceMVC.Controllers
                             elem.Summary = elem.ArSummary;
                         elem.Category.Name = elem.Category.ArName;
 
-
-
                     }
                 }
             }

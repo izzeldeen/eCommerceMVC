@@ -17,7 +17,7 @@ namespace Api.Controllers
 {
     public class SuppliersApiController : ApiController
     {
-        private eCommerceContext db = new eCommerceContext();
+        private eCommerceContext context = new eCommerceContext();
 
         [System.Web.Http.HttpGet]
         public List<Supplier> GetAll() => SuppliersService.Instance.GetAllSuppliers();
@@ -38,7 +38,7 @@ namespace Api.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                context.Dispose();
             }
             base.Dispose(disposing);
         }

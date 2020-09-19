@@ -64,7 +64,6 @@ namespace Api.Controllers
             }
 
             return response;
-
         }
     
         [System.Web.Http.HttpGet]
@@ -94,10 +93,7 @@ namespace Api.Controllers
                 };
             }
 
-
             return null;
-
-
         }
 
         [System.Web.Http.HttpGet]
@@ -110,14 +106,10 @@ namespace Api.Controllers
             var products = await ProductsApiService.Instance.GetALLproductWithIncude(spec);
 
             return products;
-
-
-        }
-
-
+         }
         public IQueryable<Product> GetProductSortByPrice( decimal from  , decimal to, string search)
         {
-           var ListProduct =    productsApiService.SortByPrice(from , to , search);
+           var ListProduct = productsApiService.SortByPrice(from , to , search);
 
             foreach(var item in ListProduct)
             {
@@ -129,7 +121,5 @@ namespace Api.Controllers
             return ListProduct;
 
         }
-        
-
     }
 }

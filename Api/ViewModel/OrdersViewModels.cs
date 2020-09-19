@@ -6,20 +6,20 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace eCommerceMVC.ViewModels
+namespace Api.ViewModels
 {
-    public class CheckoutViewModel : PageViewModel
+    public class CheckoutViewModel 
     {
         public bool CartHasProducts { get; set; }
         public string PromoCode { get; set; }
     }
-    public class TrackOrderViewModel : PageViewModel
+    public class TrackOrderViewModel 
     {
         public Order Order { get; set; }
         public int? OrderID { get; set; }
     }
 
-    public class PrintInvoiceViewModel : PageViewModel
+    public class PrintInvoiceViewModel 
     {
         public Order Order { get; set; }
         public int? OrderID { get; set; }
@@ -46,6 +46,8 @@ namespace eCommerceMVC.ViewModels
         [Required]
         [Display(Name = "Customer Name")]
         public string FullName { get; set; }
+        [Required]
+        public string UserId { get; set; }
 
         [Required]
         [EmailAddress]
@@ -75,6 +77,7 @@ namespace eCommerceMVC.ViewModels
 
         public List<int> ProductIDs { get; set; }
         public List<Product> Products { get; set; }
+        public int PaymentMethod { get; set; }
     }
     public class PlaceOrderCashOnDeliveryViewModel
     {
@@ -113,6 +116,8 @@ namespace eCommerceMVC.ViewModels
 
         public List<int> ProductIDs { get; set; }
         public List<Product> Products { get; set; }
+
+        public int? PaymentMethod { get; set; }
     }
 
     public class UserOrdersViewModel
@@ -122,7 +127,7 @@ namespace eCommerceMVC.ViewModels
         public string UserEmail { get; set; }
         public eCommerceUser User { get; set; }
         public List<Order> UserOrders { get; set; }
-        public Pager Pager { get; set; }
+        public eCommerceMVC.ViewModels.Pager Pager { get; set; }
 
     }
 }

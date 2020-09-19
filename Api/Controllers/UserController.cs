@@ -31,10 +31,6 @@ namespace Api.Controllers
         private readonly HttpPostedFileBase _httPostFileBase;
         UserApiService userApiService = new UserApiService();
 
-
-
-
-
         public UserController(eCommerceContext db ,eCommerceUserManager userManager , HttpPostedFileBase httpPostedFileBase )
         {
             context = db;
@@ -119,7 +115,7 @@ namespace Api.Controllers
             var user = await userApiService.GetUser(username , email);
             if (user != null)
             {
-                eCommerceContext context = new eCommerceContext();
+               
 
              var res =   VerifyHashedPassword(user.PasswordHash , password);
                 if(res == true)
@@ -159,8 +155,6 @@ namespace Api.Controllers
 
             eCommerceUser user = await userApiService.GetUserById(ResetVM.UserId);
 
-
-
             if (user != null)
             {
                
@@ -177,10 +171,7 @@ namespace Api.Controllers
                 {
                     jResult.Data = new { Success = false, Messages = "Unable to reset password." };
                 }
-
-
-
-            }
+             }
           
 
 
@@ -199,11 +190,9 @@ namespace Api.Controllers
 
                 return jResult;
             }
-           // eCommerceContext context = new eCommerceContext();
             string fileName = Path.GetFileNameWithoutExtension(file.FileName);
             string extesntion = Path.GetExtension(file.FileName);
             fileName = fileName + DateTime.Now.ToString("yymmssfff") + extesntion;
-            // System.Web.Hosting.HostingEnvironment.MapPath(path);
             string pathApi =Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/Content/images/"), fileName);
             if (file.FileName.Length > 0)
             {
@@ -214,12 +203,8 @@ namespace Api.Controllers
             { URL = "api.jomlahjo.com/Content/images/" + fileName,
                 ModifiedOn = DateTime.Now
             };
-           
-            
-            
             return await userApiService.AddUserPictuer(Userid,picture);
-          
-        }
+          }
 
         [System.Web.Http.HttpPost]
         public async Task<JsonResult> UpdateProfile(eCommerceUser model)
@@ -274,9 +259,7 @@ namespace Api.Controllers
 
             var callbackUrl = "http://jomlahjo.com/reset-password?userId=" + user.Id + "&code=" + Code;
 
-           UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-
+         await  UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
          //For more security alawys return True
 
@@ -306,8 +289,6 @@ namespace Api.Controllers
             Buffer.BlockCopy(buffer2, 0, dst, 0x11, 0x20);
             return Convert.ToBase64String(dst);
         }
-
-
         public static bool VerifyHashedPassword(string hashedPassword, string password)
         {
             byte[] buffer4;

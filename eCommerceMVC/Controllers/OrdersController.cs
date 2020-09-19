@@ -522,13 +522,11 @@ namespace eCommerceMVC.Controllers
                 if (cartItemsCookie != null && !string.IsNullOrEmpty(cartItemsCookie.Value))
                 {
                     model.ProductIDs = cartItemsCookie.Value.Split('-').Select(x => int.Parse(x)).ToList();
-
                     if (model.ProductIDs.Count > 0)
                     {
                         model.Products = ProductsService.Instance.GetProductsByIDs(model.ProductIDs.Distinct().ToList());
                     }
                 }
-
                 if (model.ProductIDs != null && model.ProductIDs.Count > 0 && model.Products != null && model.Products.Count > 0)
                 {
                     var deliveryInfo = Request.Cookies["DeliveryInfo"];

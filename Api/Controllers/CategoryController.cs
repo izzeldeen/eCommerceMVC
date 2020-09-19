@@ -1,11 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
-using eCommerce.Data;
 using eCommerce.Entities;
-using eCommerce.Services;
 using eCommerce.Services.ApiServices;
 
 namespace Api.Controllers
