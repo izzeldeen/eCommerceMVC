@@ -14,8 +14,10 @@ namespace eCommerceApi.Dtos
         public string Category { get; set; }
 
         public string ArName { get; set; }
-    //    public List<ProductPicture> PictuerUrl { get; set; }
-       public string PictuerUrl { get; set; }
+        //    public List<ProductPicture> PictuerUrl { get; set; }
+        //Last update public string PictuerUrl { get; set; }
+        public List<ProductPicture> PictuerUrl { get; set; }
+        
    // public List<string> pictuer { get; set;  }
         public bool isOutOfStouck { get; set; } = false;
         public decimal Price { get; set; }

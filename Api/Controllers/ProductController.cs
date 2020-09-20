@@ -31,7 +31,7 @@ namespace Api.Controllers
         ProductsApiService productsApiService = new ProductsApiService();
         Methods Method = new Methods();
         CategoryApiService categoryApiService = new CategoryApiService();
-        public async Task<List<ProductToReturnDto>> GetAll()
+        public async Task<IEnumerable<ProductToReturnDto>> GetAll()
         {
             
             var product = await productsApiService.GetAll();          
@@ -39,30 +39,33 @@ namespace Api.Controllers
             var categories = _context.Categories;
             foreach (var elem in product)
             {
+                
                 var category = categories.Find(elem.CategoryID).Name;
                 var categoryArName = categories.Find(elem.CategoryID).ArName;            
                 elem.Description =  Method.RemoveRegx(elem.Description);
                 elem.ArDescription = Method.RemoveRegx(elem.ArDescription);
-                ProductToReturnDto products = new ProductToReturnDto
-                {
-                    Category = category,
-                    CategoryId = elem.CategoryID,
-                    CategoryArName = categoryArName,
-                    Price = elem.Price,
-                    Name = elem.Name,
-                    PictuerUrl = elem.ProductPictures[0].Picture.URL.ToString(),
-                    ArName = elem.ArName,
-                    isOutOfStouck = elem.isOutOfStock,
-                    Id = elem.ID,
-                    Description = elem.Description,
-                    ArDescription = elem.ArDescription
-                    
+              
+                    ProductToReturnDto products = new ProductToReturnDto
+                    {
+                        Category = category,
+                        CategoryId = elem.CategoryID,
+                        CategoryArName = categoryArName,
+                        Price = elem.Price,
+                        Name = elem.Name,
+                        PictuerUrl = elem.ProductPictures,
+                        ArName = elem.ArName,
+                        isOutOfStouck = elem.isOutOfStock,
+                        Id = elem.ID,
+                        Description = elem.Description,
+                        ArDescription = elem.ArDescription
+                    };
+                    response.Add(products);
                 
-                };
+                
+               
 
-                response.Add(products);
+                
             }
-
             return response;
         }
     
@@ -83,7 +86,7 @@ namespace Api.Controllers
                     CategoryArName = categoryArName,
                     Price = product.Price,
                     Name = product.Name,
-                    PictuerUrl = product.ProductPictures[0].Picture.URL.ToString(),
+                    PictuerUrl = product.ProductPictures,
                     Description = Method.RemoveRegx(product.Description),
                     ArDescription = Method.RemoveRegx(product.ArDescription),
                     ArName = product.ArName,
